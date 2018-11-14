@@ -29,5 +29,5 @@ print('Nodes with deg > 10', sum([item.GetVal2() for item in DegToCntV if item.G
 # Edges = snap.TIntPrFltH()
 # snap.GetBetweennessCentr(Network, Nodes, Edges, 0.1)
 
-ClustCoeff = snap.GetClustCf(Network, 10000)
-print('Clustering coeff', ClustCoeff)
+# ClustCoeff = snap.GetClustCf(Network, 10000)
+# print('Clustering coeff', ClustCoeff)

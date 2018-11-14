@@ -191,7 +191,7 @@ POSTID_NGRAM_FOLDED_GRAPH_PATH = path.join(BASE_PATH, "Postid_Ngram_Folded_Graph
 
 # # Load the graphs in SNAP.
 userid_ngram_bipartite_graph = snap.LoadEdgeList(snap.PUNGraph, USERID_NGRAM_TSV_PATH, 0, 1)
-# postid_ngram_bipartite_graph = snap.LoadEdgeList(snap.PUNGraph, POSTID_NGRAM_TSV_PATH, 0, 1)
+postid_ngram_bipartite_graph = snap.LoadEdgeList(snap.PUNGraph, POSTID_NGRAM_TSV_PATH, 0, 1)
 
 
 # # In[44]:
@@ -200,7 +200,7 @@ userid_ngram_bipartite_graph = snap.LoadEdgeList(snap.PUNGraph, USERID_NGRAM_TSV
 # # Load pickled datastructures.
 ngramid_dict = pickle.load(open(NGRAMID_DICT_PICKLE_PATH, "rb"))
 userid_set = pickle.load(open(USERID_SET_PICKLE_PATH, "rb"))
-# postid_set = pickle.load(open(POSTID_SET_PICKLE_PATH, "rb"))
+postid_set = pickle.load(open(POSTID_SET_PICKLE_PATH, "rb"))
 
 
 # # In[42]:
@@ -260,17 +260,17 @@ def U_fold_graph(G, U_set):
 # # In[47]:
 
 
-# # Fold to create post graph.
-# postid_graph = U_fold_graph(postid_ngram_bipartite_graph,e postid_set)
+# Fold to create post graph.
+postid_graph = U_fold_graph(postid_ngram_bipartite_graph, postid_set)
 
 
-# # In[49]:
+# In[49]:
 
 
-# # Save created post graph.
-# FOut = snap.TFOut(POSTID_FOLDED_GRAPH_PATH)
-# postid_graph.Save(FOut)
-# FOut.Flush()
+# Save created post graph.
+FOut = snap.TFOut(POSTID_FOLDED_GRAPH_PATH)
+postid_graph.Save(FOut)
+FOut.Flush()
 
 
 # Graph containing n-gram nodes folded from user graph.
@@ -278,15 +278,15 @@ def U_fold_graph(G, U_set):
 # In[ ]:
 
 
-# Fold to n-gram graph from the user graph.
-userid_ngram_graph = U_fold_graph(userid_ngram_bipartite_graph, ngramid_dict.values())
+# # Fold to n-gram graph from the user graph.
+# userid_ngram_graph = U_fold_graph(userid_ngram_bipartite_graph, ngramid_dict.values())
 
 
-# In[ ]:
+# # In[ ]:
 
 
-# Save created user n-gram  graph.
-FOut = snap.TFOut(USERID_NGRAM_FOLDED_GRAPH_PATH)
-userid_ngram_graph.Save(FOut)
-FOut.Flush()
+# # Save created user n-gram  graph.
+# FOut = snap.TFOut(USERID_NGRAM_FOLDED_GRAPH_PATH)
+# userid_ngram_graph.Save(FOut)
+# FOut.Flush()
 
