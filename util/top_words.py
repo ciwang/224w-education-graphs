@@ -14,6 +14,8 @@ ROW_INDEX = 0
 BODY_INDEX = 3
 ID_INDEX = 9
 OWNERUSERID_INDEX = 15
+DATE_INDEX = 7
+POSTTYPEID_INDEX = 17
 
 NUM_TOP_WORDS = 5
 
@@ -26,7 +28,7 @@ if len(sys.argv) > 1:
 else:
     CSV_FILE = '../data/academia.stackexchange.com/Posts.csv'
 
-OUTPUT_FILE = Path(CSV_FILE).with_name(Path(CSV_FILE).with_suffix('').name + '-top_words').with_suffix('.tsv')
+OUTPUT_FILE = Path(CSV_FILE).with_name(Path(CSV_FILE).with_suffix('').name + '-top_words_more').with_suffix('.tsv')
 
 ########## cleaning and loading into corpus ##########
 
@@ -40,7 +42,7 @@ with open(CSV_FILE, "r") as f:
         new_row = row[:]
         new_row[BODY_INDEX] = clean(new_row[BODY_INDEX])
         new_row[BODY_INDEX] = new_row[BODY_INDEX].replace('\n', ' ')
-        reference[int(new_row[ROW_INDEX])] = [new_row[BODY_INDEX], new_row[ID_INDEX], new_row[OWNERUSERID_INDEX]]
+        reference[int(new_row[ROW_INDEX])] = [new_row[BODY_INDEX], new_row[ID_INDEX], new_row[OWNERUSERID_INDEX], new_row[DATE_INDEX], new_row[POSTTYPEID_INDEX]]
         corpus.append(new_row[BODY_INDEX])
 
 # reference is a dict of (postbody, postid, userid) with row as key
@@ -90,7 +92,7 @@ print('Writing to {}...'.format(OUTPUT_FILE))
 
 with open(OUTPUT_FILE, 'w', newline='') as tsvfile:
     writer = csv.writer(tsvfile, delimiter='\t')
-    header_row = ['Body', 'Id', 'OwnerUserId']
+    header_row = ['Body', 'Id', 'OwnerUserId',  'Date', 'PostTypeId']
     for num in range(1, NUM_TOP_WORDS + 1):
         header_row.append('TopWord{}'.format(num))
     writer.writerow(header_row)
