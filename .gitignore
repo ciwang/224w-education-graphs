@@ -3,5 +3,6 @@
 *.graph
 *.DS_Store
 *.ipynb_checkpoints
+*.zip
 *.pyc
 *.csv
