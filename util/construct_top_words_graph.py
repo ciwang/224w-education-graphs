@@ -17,17 +17,17 @@ from tqdm import tqdm
 # In[6]:
 
 
-BASE_PATH = "../data/academia.stackexchange.com"
-POST_TOP_NGRAM_PATH = path.join(BASE_PATH, "Posts-top_words.tsv")
-USERID_NGRAM_TSV_PATH = path.join(BASE_PATH, "Userid_Ngram_Bipartite_Graph.tsv")
-POSTID_NGRAM_TSV_PATH = path.join(BASE_PATH, "Postid_Ngram_Bipartite_Graph.tsv")
-NGRAMID_DICT_PICKLE_PATH = path.join(BASE_PATH, "Ngramid_Dict.pickle")
-USERID_SET_PICKLE_PATH = path.join(BASE_PATH, "Userid_set.pickle")
-POSTID_SET_PICKLE_PATH = path.join(BASE_PATH, "Postid_set.pickle")
-USERID_FOLDED_GRAPH_PATH = path.join(BASE_PATH, "Userid_Folded_Graph.graph")
+BASE_PATH = "../data/academia.stackexchange.com/PostSept2017"
+# POST_TOP_NGRAM_PATH = path.join(BASE_PATH, "Posts-top_words.tsv")
+USERID_NGRAM_TSV_PATH = path.join(BASE_PATH, "Userid_Ngram_Bipartite_Graph_PostSept17.tsv")
+POSTID_NGRAM_TSV_PATH = path.join(BASE_PATH, "Postid_Ngram_Bipartite_Graph_PostSept17.tsv")
+NGRAMID_DICT_PICKLE_PATH = path.join(BASE_PATH, "Ngramid_Dict_PostSept17.pickle")
+USERID_SET_PICKLE_PATH = path.join(BASE_PATH, "Userid_set_PostSept17.pickle")
+POSTID_SET_PICKLE_PATH = path.join(BASE_PATH, "Postid_set_PostSept17.pickle")
+# USERID_FOLDED_GRAPH_PATH = path.join(BASE_PATH, "Userid_Folded_Graph.graph")
 POSTID_FOLDED_GRAPH_PATH = path.join(BASE_PATH, "Postid_Folded_Graph.graph")
 USERID_NGRAM_FOLDED_GRAPH_PATH = path.join(BASE_PATH, "Userid_Ngram_Folded_Graph.graph")
-POSTID_NGRAM_FOLDED_GRAPH_PATH = path.join(BASE_PATH, "Postid_Ngram_Folded_Graph.graph")
+# POSTID_NGRAM_FOLDED_GRAPH_PATH = path.join(BASE_PATH, "Postid_Ngram_Folded_Graph.graph")
 
 
 # # ### Load top words from posts.
@@ -245,13 +245,6 @@ def U_fold_graph(G, U_set):
             for U2 in get_neighbor_set(G, V):
                 if U1 != U2 and not folded_G.IsEdge(U1, U2):
                     folded_G.AddEdge(U1, U2)
-    # for N1 in tqdm(G.Nodes(), total=G.GetNodes()):
-    #     if (N1.GetId() not in U_set): continue # N1 not a disease node.
-    #     for N2 in G.Nodes():
-    #         if (N1.GetId() == N2.GetId()): continue # No self-loops.
-    #         if (N2.GetId() not in U_set): continue # N2 not a disease node.
-    #         if (snap.GetCmnNbrs(G, N1.GetId(), N2.GetId()) > 0):
-    #                 folded_G.AddEdge(N1.GetId(), N2.GetId())
     return folded_G
 
 
@@ -270,6 +263,7 @@ postid_graph = U_fold_graph(postid_ngram_bipartite_graph, postid_set)
 # Save created post graph.
 FOut = snap.TFOut(POSTID_FOLDED_GRAPH_PATH)
 postid_graph.Save(FOut)
+print 'graph saved to %s' % POSTID_FOLDED_GRAPH_PATH
 FOut.Flush()
 
 
@@ -278,15 +272,16 @@ FOut.Flush()
 # In[ ]:
 
 
-# # Fold to n-gram graph from the user graph.
-# userid_ngram_graph = U_fold_graph(userid_ngram_bipartite_graph, ngramid_dict.values())
+# Fold to n-gram graph from the user graph.
+userid_ngram_graph = U_fold_graph(userid_ngram_bipartite_graph, ngramid_dict.values())
 
 
 # # In[ ]:
 
 
 # # Save created user n-gram  graph.
-# FOut = snap.TFOut(USERID_NGRAM_FOLDED_GRAPH_PATH)
-# userid_ngram_graph.Save(FOut)
-# FOut.Flush()
+FOut = snap.TFOut(USERID_NGRAM_FOLDED_GRAPH_PATH)
+userid_ngram_graph.Save(FOut)
+print 'graph saved to %s' % USERID_NGRAM_FOLDED_GRAPH_PATH
+FOut.Flush()
 
