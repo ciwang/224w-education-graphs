@@ -6,7 +6,7 @@ import sys
 if len(sys.argv) > 1:
     XML_FILE = sys.argv[1]
 else:
-    XML_FILE = 'data/academia.stackexchange.com/Posts.xml'
+    XML_FILE = '../data/stats.stackexchange.com/Posts.xml'
 
 class XML2DataFrame:
 
@@ -31,7 +31,7 @@ class XML2DataFrame:
             else:
                 raise ValueError('duplicate attribute {0} at element {1}'.format(key, element.getroottree().getpath(element)))
 
-        """ Apply recursion (Note: we technically don't need this because 
+        """ Apply recursion (Note: we technically don't need this because
          the <row>s don't have children) """
         for child in list(element):
             self.parse_element(child, parsed)
@@ -45,6 +45,6 @@ class XML2DataFrame:
 
 xml2df = XML2DataFrame(XML_FILE)
 xml_dataframe = xml2df.process_data()
-csv_file = Path(XML_FILE).with_suffix('').with_suffix('.csv') # remove suffix then add csv
+csv_file = Path(XML_FILE).with_suffix('.csv') # remove suffix then add csv
 xml_dataframe.to_csv(csv_file)
 print('Saved data to %s' % csv_file)
