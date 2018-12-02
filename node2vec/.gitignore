@@ -1,0 +1,15 @@
+*.pyc
+.DS_Store
+target
+bin
+build
+.gradle
+*.iml
+*.ipr
+*.iws
+*.log
+.classpath
+.project
+.settings
+.idea
+node2vec_spark/
