@@ -7,15 +7,14 @@ def get_modularity(G, community_dict):
     - community_dict: maps node id to community
     '''
     ##########################################################################
-    A = get_adjacency_matrix(G)
-    two_M = float(np.sum(A))
+    two_M = G.GetEdges() * 2
     mod_sum = 0
     for NI in G.Nodes():
         NI_id = NI.GetId()
         for NJ in G.Nodes():
             NJ_id = NJ.GetId()
             if (community_dict[NI_id] == community_dict[NJ_id]):
-                mod_sum += A[NI_id, NJ_id] - ((NI.GetDeg() * NJ.GetDeg()) / two_M)
+                mod_sum += G.IsEdge(NI_id, NJ_id) - ((NI.GetDeg() * NJ.GetDeg()) / two_M)
     modularity = mod_sum / two_M
     return modularity
     ##########################################################################
