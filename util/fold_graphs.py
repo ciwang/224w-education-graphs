@@ -15,12 +15,12 @@ from tqdm import tqdm
 # POSTID_SET_PICKLE_PATH = path.join(BASE_PATH, "Postid_set.pickle")
 # USERID_NGRAM_FOLDED_GRAPH_PATH = path.join(BASE_PATH, "Userid_Ngram_Folded_Graph.graph")
 # POSTID_FOLDED_GRAPH_PATH = path.join(BASE_PATH, "Postid_Folded_Graph.graph")
-BASE_PATH = "../data/stats.stackexchange.com/Bigrams"
-USERID_NGRAM_TSV_PATH = path.join(BASE_PATH, "Userid_Bigram_Bipartite_Graph")
-POSTID_NGRAM_TSV_PATH = path.join(BASE_PATH, "Postid_Bigram_Bipartite_Graph")
-NGRAMID_DICT_PICKLE_PATH = path.join(BASE_PATH, "Bigramid_Dict")
-USERID_SET_PICKLE_PATH = path.join(BASE_PATH, "Userid_set")
-POSTID_SET_PICKLE_PATH = path.join(BASE_PATH, "Postid_set")
+BASE_PATH = "../data/stats.stackexchange.com/Mixed"
+USERID_NGRAM_TSV_PATH = path.join(BASE_PATH, "ngram_graph_STATS_20k-Posts_11-top_uni&bigrams_nostem")
+POSTID_NGRAM_TSV_PATH = path.join(BASE_PATH, "postid_graph_STATS_20k-Posts_11-top_uni&bigrams_nostem")
+NGRAMID_DICT_PICKLE_PATH = path.join(BASE_PATH, "ngram_dict_STATS_20k-Posts_11-top_uni&bigrams_nostem")
+USERID_SET_PICKLE_PATH = path.join(BASE_PATH, "userid_set_STATS_20k-Posts_11-top_uni&bigrams_nostem")
+POSTID_SET_PICKLE_PATH = path.join(BASE_PATH, "postid_set_STATS_20k-Posts_11-top_uni&bigrams_nostem")
 USERID_NGRAM_FOLDED_GRAPH_PATH = path.join(BASE_PATH, "Userid_Ngram_Folded_Graph.graph")
 POSTID_FOLDED_GRAPH_PATH = path.join(BASE_PATH, "Postid_Folded_Graph.graph")
 
