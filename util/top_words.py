@@ -20,14 +20,14 @@ NUM_TOP_WORDS = 5
 if len(sys.argv) > 1:
     CSV_FILE = sys.argv[1]
 else:
-    CSV_FILE = '../data/stats.stackexchange.com/Posts_11.csv'
+    CSV_FILE = '../data/stats.stackexchange.com/Posts_0.csv'
 
 OUTPUT_FILE = Path(CSV_FILE).with_name('STATS_20k-' + Path(CSV_FILE).with_suffix('').name + '-top_uni&bigrams_nostem').with_suffix('.tsv')
 
 PICKLE_FILE = Path(OUTPUT_FILE).with_suffix('.pickle')
 
 # if using a split CSV, the index of the first data row, else 0
-START_ROW = 220000
+START_ROW = 0
 
 # set both to 1 for unigram, 2 for bigram, etc., or set a range
 NGRAM_START = 1
