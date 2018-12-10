@@ -8,13 +8,13 @@ from os import path
 from tqdm import tqdm
 
 # BASE_PATH = "../data/academia.stackexchange.com/Years"
-# USERID_NGRAM_TSV_PATH = path.join(BASE_PATH, "Userid_Ngram_Bipartite_Graph.tsv")
-# POSTID_NGRAM_TSV_PATH = path.join(BASE_PATH, "Postid_Ngram_Bipartite_Graph.tsv")
-# NGRAMID_DICT_PICKLE_PATH = path.join(BASE_PATH, "Ngramid_Dict.pickle")
-# USERID_SET_PICKLE_PATH = path.join(BASE_PATH, "Userid_set.pickle")
-# POSTID_SET_PICKLE_PATH = path.join(BASE_PATH, "Postid_set.pickle")
-# USERID_NGRAM_FOLDED_GRAPH_PATH = path.join(BASE_PATH, "Userid_Ngram_Folded_Graph.graph")
-# POSTID_FOLDED_GRAPH_PATH = path.join(BASE_PATH, "Postid_Folded_Graph.graph")
+# USERID_NGRAM_TSV_PATH = path.join(BASE_PATH, "Userid_Ngram_Bipartite_Graph%s.tsv")
+# POSTID_NGRAM_TSV_PATH = path.join(BASE_PATH, "Postid_Ngram_Bipartite_Graph%s.tsv")
+# NGRAMID_DICT_PICKLE_PATH = path.join(BASE_PATH, "Ngramid_Dict%s.pickle")
+# USERID_SET_PICKLE_PATH = path.join(BASE_PATH, "Userid_set%s.pickle")
+# POSTID_SET_PICKLE_PATH = path.join(BASE_PATH, "Postid_set%s.pickle")
+# USERID_NGRAM_FOLDED_GRAPH_PATH = path.join(BASE_PATH, "Userid_Ngram_Folded_Graph%s.graph")
+# POSTID_FOLDED_GRAPH_PATH = path.join(BASE_PATH, "Postid_Folded_Graph%s.graph")
 BASE_PATH = "../data/stats.stackexchange.com/Mixed"
 USERID_NGRAM_TSV_PATH = path.join(BASE_PATH, "ngram_graph_STATS_20k-Posts_11-top_uni&bigrams_nostem")
 POSTID_NGRAM_TSV_PATH = path.join(BASE_PATH, "postid_graph_STATS_20k-Posts_11-top_uni&bigrams_nostem")
