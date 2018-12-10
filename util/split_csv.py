@@ -57,4 +57,7 @@ if len(sys.argv) > 1:
 else:
     CSV_FILE = '../data/stats.stackexchange.com/Posts.csv'
 
-split_csv(CSV_FILE, Path(CSV_FILE).parent, Path(CSV_FILE).stem, 100000)
+MAX_ROWS = 20000
+
+split_csv(CSV_FILE, Path(CSV_FILE).parent, Path(CSV_FILE).stem, MAX_ROWS)
+print('Finished splitting {}, max {} rows'.format(CSV_FILE, MAX_ROWS))

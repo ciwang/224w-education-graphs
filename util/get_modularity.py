@@ -3,7 +3,7 @@ def get_modularity(G, community_dict):
     This function might be useful to compute the modularity of a given cut
     defined by two sets S and neg_S. We would normally require sets S and neg_S
     to be disjoint and to include all nodes in Graph.
-    
+
     - community_dict: maps node id to community
     '''
     ##########################################################################
